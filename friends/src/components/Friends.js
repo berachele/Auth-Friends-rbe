@@ -14,10 +14,14 @@ class Friends extends React.Component {
         axiosWithAuth()
             .get("/api/friends")
             .then(res => {
-                console.log({res})
+                // console.log({res})
+                //res.data
+                this.setState({
+                    friends: res.data
+                })
             })
             .catch(err => {
-                console.log({err})
+                console.log("Error in Friends", err)
             })
     }
     render(){
