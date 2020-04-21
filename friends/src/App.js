@@ -21,6 +21,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route component={Login} />
         </Switch>
+        <footer />
       </div>
     </Router>
   );
