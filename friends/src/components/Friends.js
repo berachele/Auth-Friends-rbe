@@ -1,6 +1,7 @@
 import React from "react"
 import {axiosWithAuth} from "../utils/axiosWithAuth"
 import AddFriend from "./AddFriend"
+import {Route} from "react-router-dom"
 
 class Friends extends React.Component {
     state = {
@@ -39,7 +40,7 @@ class Friends extends React.Component {
                             <p>Email: {friend.email}</p>
                         </div>
                 })}
-                <AddFriend state={this.state}/>
+                <Route component={AddFriend}/>
             </div>
         )
     }

@@ -2,12 +2,15 @@ import React from "react"
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 
 class AddFriend extends React.Component {
-    state= {
-        buddy: {
-            id: "",
-            name:"",
-            age:"",
-            email:""
+    constructor(props){
+        super(props)
+        this.state= {
+            buddy: {
+                id: "",
+                name:"",
+                age:"",
+                email:""
+            }
         }
     }
 
@@ -21,20 +24,19 @@ class AddFriend extends React.Component {
         })
     }
 
-    addFriend = (e, props) => {
-        e.preventDefault()
+    addFriend = e => {
+        // e.preventDefault()
         axiosWithAuth()
             .post("/api/friends", this.state.buddy)
             .then(res => {
-                console.log({res})
+                console.log("props", this.props)
                 //res.data
                 this.setState({
                     buddy:{
-                        ...this.state.buddy,
-                        // friends: res.data Pass in props? to get friends [] ?
-                        // id: res.data.length
+                        ...this.state.buddy
                     }
                 })
+                this.props.history.push("/friends", res.data)
             })
             .catch(err => {
                 console.log("Error in AddFriend", err)
